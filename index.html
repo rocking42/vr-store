@@ -3,18 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title>Hello, World! - A-Frame</title>
+
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="bundle.js"></script>
     <script src="main.js"></script>
+
   </head>
   <body>
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#666666"></a-box>
+      <a-assets>
+        <img id="texture" src="space.jpg">
+        <img src="dubai.jpg" id="dubai">
+        <img src="panoboat.jpg" id="boat">
+      </a-assets>
+      <a-entity id="box" geometry="primitive: box" position="0 2 -4" draw="background: #D7E8FF" textwrap="textAlign: center; x: 128; y: 128; text: Hello world!">
+        <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
+      </a-entity>
+      <a-box bmfont-text="text: Hello World;" id="make" src="#dubai" position="-1 0.5 -3" rotation="0 45 0" color="#FFF">
+        <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
+      </a-box>
+      <a-camera position="0 1.8 0">
+        <a-cursor color="#2E3A87"></a-cursor>
+      </a-camera>
+      <a-entity ></a-entity>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky src="space.jpg" rotation="0 -130 0"></a-sky>
+      <a-cylinder id="titanic" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFF" src="#boat">
+        <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
+      </a-cylinder>
+      <a-plane position="0 1 -2" rotation="0 -30 0" width="1" height="1" color="#FFF"></a-plane>
+      <a-plane position="6 1 0" rotation="0 -100 0" width="4" height="4" src="#boat" color="#FFF"></a-plane>
+
+      <a-sky src="#texture" rotation="0 -130 0"></a-sky>
     </a-scene>
+
   </body>
 </html>
