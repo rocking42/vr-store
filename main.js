@@ -1,6 +1,7 @@
-// $(this).attr("textwrap").text
+//
 function returnMovieName(data) {
-    console.log(data.Title);
+
+    console.log($("#box").attr("textwrap").text);
 }
 function getMovieName(query) {
     $.ajax({
@@ -12,6 +13,20 @@ function getMovieName(query) {
         }
     }).done(returnMovieName);
 }
+
+AFRAME.registerComponent('scale-on-click', {
+  schema: {
+    to: {default: 'textAlign: center; x: 128; y: 128; text: Hello everyone'}
+  },
+  init: function () {
+    var data = this.data;
+    this.el.addEventListener('click', function () {
+      this.setAttribute('textwrap', data.to);
+    });
+  }
+});
+
+
 $(document).ready(function() {
     $("a-box").on("click", function() {
         getMovieName($(this).attr("id"));
@@ -20,8 +35,8 @@ $(document).ready(function() {
         getMovieName($(this).attr("id"));
     });
     $("#box").on("click", function() {
-        console.log($(this).attr("textwrap").text);
-        getMovieName($(this).attr("id"));
+        $("#box").attr("textwrap").text = "bye";
+        console.log(getMovieName($(this).attr("id")));
     });
 
 });

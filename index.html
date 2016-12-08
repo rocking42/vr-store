@@ -1,3 +1,5 @@
+<!-- -image id="shoe-add-cart-shoe-2" position="0.7 0 -0.5" height="0.1" geometry="primitive:plane;height:0.1;width:0.4" src="//cdn.shopify.com/s/files/1/1199/5686/t/3/assets/glide-runners-addedtocart.png" material="color:#FFF;shader:flat;side:double;transparent:true;src:url(//cdn.shopify.com/s/files/1/1199/5686/t/3/assets/glide-runners-addedtocart.png)" width="0.4" scale="1.2 1.2 1.2"><a-animation attribute="scale" to="1.2 1.2 1.2" begin="enlarge" dur="500" fill="both" easing="ease-out"></a-animation><a-animation attribute="scale" to="1 1 1" begin="reduce" dur="500" fill="both" easing="ease-out"></a-animation></a-image> -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,9 +8,7 @@
 
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
-
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="bundle.js"></script>
     <script src="main.js"></script>
@@ -20,13 +20,18 @@
         <img id="texture" src="space.jpg">
         <img src="dubai.jpg" id="dubai">
         <img src="panoboat.jpg" id="boat">
+        <img src="beach.jpg" id="beach">
+        <img src="goat.jpg" id="goat">
+        <img src="rainforest.jpg" id="rainforest">
       </a-assets>
-      <a-entity id="box" geometry="primitive: box" position="0 2 -4" draw="background: #D7E8FF" textwrap="textAlign: center; x: 128; y: 128; text: Hello world!">
+      <a-entity id="box" geometry="primitive: box" position="0 2 -4" draw="background: #D7E8FF" textwrap="textAlign: center; x: 128; y: 128; text: Hello everyone">
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
       </a-entity>
-      <a-box bmfont-text="text: Hello World;" id="make" src="#dubai" position="-1 0.5 -3" rotation="0 45 0" color="#FFF">
+
+      <a-box  id="make" src="#dubai" position="-1 0.5 -3" rotation="0 45 0" color="#FFF" scale-on-click="to: textAlign: center x: 128 y: 128 text: Hello">
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
       </a-box>
+
       <a-camera position="0 1.8 0">
         <a-cursor color="#2E3A87"></a-cursor>
       </a-camera>
@@ -36,9 +41,9 @@
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
       </a-cylinder>
       <a-plane position="0 1 -2" rotation="0 -30 0" width="1" height="1" color="#FFF"></a-plane>
-      <a-plane position="6 1 0" rotation="0 -100 0" width="4" height="4" src="#boat" color="#FFF"></a-plane>
+      <a-plane position="6 1 0" rotation="0 -100 0" width="4" height="4" src="#goat" color="#FFF"></a-plane>
 
-      <a-sky src="#texture" rotation="0 -130 0"></a-sky>
+      <a-sky src="#rainforest" rotation="0 -130 0"></a-sky>
     </a-scene>
 
   </body>
