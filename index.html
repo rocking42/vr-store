@@ -17,6 +17,8 @@
   <body>
     <a-scene>
       <a-assets>
+        <a-asset-item id="tree-obj" src="elephant.obj"></a-asset-item>
+        <a-asset-item id="tree-mtl" src="elephant.mtl"></a-asset-item>
         <img id="texture" src="space.jpg">
         <img src="dubai.jpg" id="dubai">
         <img src="panoboat.jpg" id="boat">
@@ -31,11 +33,10 @@
       <a-box  id="make" src="#dubai" position="-1 0.5 -3" rotation="0 45 0" color="#FFF" scale-on-click="to: textAlign: center x: 128 y: 128 text: Hello">
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
       </a-box>
-
+      <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl", scale="0.01 0.01 0.01"></a-entity>
       <a-camera position="0 1.8 0">
         <a-cursor color="#2E3A87"></a-cursor>
       </a-camera>
-      <a-entity ></a-entity>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-cylinder id="titanic" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFF" src="#boat">
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
