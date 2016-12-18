@@ -3,6 +3,10 @@ function returnMovieName(data) {
 
     console.log($("#box").attr("textwrap").text);
 }
+
+
+
+
 function getMovieName(query) {
     $.ajax({
         url: 'http://omdbapi.com',
@@ -13,6 +17,7 @@ function getMovieName(query) {
         }
     }).done(returnMovieName);
 }
+
 
 AFRAME.registerComponent('scale-on-click', {
   schema: {

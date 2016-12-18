@@ -1,5 +1,3 @@
-<!-- -image id="shoe-add-cart-shoe-2" position="0.7 0 -0.5" height="0.1" geometry="primitive:plane;height:0.1;width:0.4" src="//cdn.shopify.com/s/files/1/1199/5686/t/3/assets/glide-runners-addedtocart.png" material="color:#FFF;shader:flat;side:double;transparent:true;src:url(//cdn.shopify.com/s/files/1/1199/5686/t/3/assets/glide-runners-addedtocart.png)" width="0.4" scale="1.2 1.2 1.2"><a-animation attribute="scale" to="1.2 1.2 1.2" begin="enlarge" dur="500" fill="both" easing="ease-out"></a-animation><a-animation attribute="scale" to="1 1 1" begin="reduce" dur="500" fill="both" easing="ease-out"></a-animation></a-image> -->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,8 +5,10 @@
     <title>Hello, World! - A-Frame</title>
 
     <meta name="description" content="Hello, World! - A-Frame">
-    <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="bundle.js"></script>
     <script src="main.js"></script>
@@ -16,9 +16,20 @@
   </head>
   <body>
     <a-scene>
+
       <a-assets>
-        <a-asset-item id="tree-obj" src="elephant.obj"></a-asset-item>
-        <a-asset-item id="tree-mtl" src="elephant.mtl"></a-asset-item>
+        <a-asset-item id="gorilla" src="gorilla.dae"></a-asset-item>
+        <a-asset-item id="elephant" src="elephant.dae"></a-asset-item>
+        <a-asset-item id="turtle" src="turtle.dae"></a-asset-item>
+        <a-asset-item id="cheetah" src="cheetah.dae"></a-asset-item>
+        <a-asset-item id="tapir" src="tapir.dae"></a-asset-item>
+        <a-asset-item id="panda" src="panda.dae"></a-asset-item>
+        <a-asset-item id="grass" src="grass.dae"></a-asset-item>
+
+
+        <!-- <a-asset-item id="desert" src="desert.dae"></a-asset-item> -->
+
+        <!-- <a-asset-item id="chameleon" src="chameleon.dae"></a-asset-item> -->
         <img id="texture" src="space.jpg">
         <img src="dubai.jpg" id="dubai">
         <img src="panoboat.jpg" id="boat">
@@ -26,26 +37,72 @@
         <img src="goat.jpg" id="goat">
         <img src="rainforest.jpg" id="rainforest">
       </a-assets>
-      <a-entity id="box" geometry="primitive: box" position="0 2 -4" draw="background: #D7E8FF" textwrap="textAlign: center; x: 128; y: 128; text: Hello everyone">
+
+      <a-entity camera="userHeight: 1.6" wasd-controls look-controls>
+        <a-entity cursor
+            position="0 0 -1"
+            raycaster="objects: .clickable"
+            scale="0.02 0.02 0.02"
+            geometry="primitive: ring"
+            material="color: black; shader: flat">
+        </a-entity>
+      </a-entity>
+
+      <a-sky src="#rainforest" rotation="0 -130 0"></a-sky>
+      <!-- <a-ocean width="50" depth="50" density="40" position="0 -0.3 -1"></a-ocean> -->
+
+      <a-entity id="box" class="clickable" geometry="primitive: box" position="8 1 5" draw="background: #D7E8FF" textwrap="textAlign: center; x: 128; y: 128; text: Hello everyone">
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
       </a-entity>
 
-      <a-box  id="make" src="#dubai" position="-1 0.5 -3" rotation="0 45 0" color="#FFF" scale-on-click="to: textAlign: center x: 128 y: 128 text: Hello">
+      <a-box class="clickable" id="make" src="#dubai" position="-10 1 3" rotation="0 45 0" color="#FFF" scale-on-click="to: textAlign: center x: 128 y: 128 text: Hello">
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
       </a-box>
-      <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl", scale="0.01 0.01 0.01", position="0 0 -6", rotation="0 45 0"></a-entity>
-      <a-camera position="0 1.8 0">
-        <a-cursor color="#2E3A87"></a-cursor>
-      </a-camera>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder id="titanic" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFF" src="#boat">
+
+      <a-cylinder id="titanic" class="clickable" position="-10 0.75 -1" radius="0.5" height="1.5" color="#FFF" src="#boat">
         <a-animation attribute="rotation" begin="click" to="0 180 0"></a-animation>
       </a-cylinder>
-      <a-plane position="0 1 -2" rotation="0 -30 0" width="1" height="1" color="#FFF"></a-plane>
-      <a-plane position="6 1 0" rotation="0 -100 0" width="4" height="4" src="#goat" color="#FFF"></a-plane>
 
-      <a-sky src="#rainforest" rotation="0 -130 0"></a-sky>
+
+      <a-plane position="10 1 0" rotation="0 -100 0" width="4" height="4" src="#goat" color="#FFF"
+         animation__scale="property: scale; dir: alternate; dur: 200;
+                    easing: easeInSine; loop: true; to: 1.2 1 1.2">
+      </a-plane>
+
+      <a-entity animation__yoyo="property: position; dir: alternate; dur: 500;
+                                easing: easeInSine; loop: true; to: 0 0.1 0">
+        <a-entity collada-model="#gorilla" scale="2 2 2" rotation="0 120 0" position="0 0 5"></a-entity>
+      </a-entity>
+
+      <a-entity animation__rotate="property: rotation; dur: 20000;
+                                   easing: linear; loop: true; to: 0 360 0; dir: reverse;"
+               animation__yoyo="property: position; dir: alternate; dur: 1000;
+                                easing: easeInSine; loop: true; to: 0 1 0">
+          <a-entity collada-model="#elephant" rotation="-1 0 0" position="6 -1 3" scale="2 2 2" ></a-entity>
+      </a-entity>
+
+      <!-- material="envMap: #beach; roughness: 0" -->
+      <a-entity collada-model="#turtle" rotation="0 0 0" position="0 0 0" ></a-entity>
+      <a-entity collada-model="#cheetah" scale="2 2 2" rotation="0 0 0" position="-5 0 0" ></a-entity>
+      <a-entity collada-model="#tapir" rotation="0 0 0" position="-7 0 0" ></a-entity>
+      <a-entity collada-model="#panda" scale="2 2 2" position="-13 0 0" ></a-entity>
+      <a-entity collada-model="#grass" scale="3 3 3" position="-113.52 -30.80 111.68" ></a-entity>
+
+      <!-- <a-entity collada-model="#desert" scale="1 1 1" position="-583.34 -30.49 590.40" ></a-entity> -->
+
+
+      <a-cylinder color="#F55" radius="0.1"
+                animation="property: color; dir: alternate; dur: 1000;
+                           easing: easeInSine; loop: true; to: #5F5"
+                animation__scale="property: scale; dir: alternate; dur: 200;
+                           easing: easeInSine; loop: true; to: 1.2 1 1.2"
+                animation__yoyo="property: position; dir: alternate; dur: 1000;
+                                 easing: easeInSine; loop: true; to: 0 2 0">
+    </a-cylinder>
+
     </a-scene>
 
   </body>
 </html>
+
+<!-- -image id="shoe-add-cart-shoe-2" position="0.7 0 -0.5" height="0.1" geometry="primitive:plane;height:0.1;width:0.4" src="//cdn.shopify.com/s/files/1/1199/5686/t/3/assets/glide-runners-addedtocart.png" material="color:#FFF;shader:flat;side:double;transparent:true;src:url(//cdn.shopify.com/s/files/1/1199/5686/t/3/assets/glide-runners-addedtocart.png)" width="0.4" scale="1.2 1.2 1.2"><a-animation attribute="scale" to="1.2 1.2 1.2" begin="enlarge" dur="500" fill="both" easing="ease-out"></a-animation><a-animation attribute="scale" to="1 1 1" begin="reduce" dur="500" fill="both" easing="ease-out"></a-animation></a-image> -->
