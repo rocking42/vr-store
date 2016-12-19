@@ -45,4 +45,7 @@ $(document).ready(function() {
         console.log(getMovieName($(this).attr("id")));
     });
 
+    var video = document.querySelector("video");
+    video.pause();
+
 });
