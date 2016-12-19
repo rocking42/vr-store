@@ -10,6 +10,7 @@
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.1.0/dist/aframe-extras.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
     <!-- <script src="https://rawgit.com/nylki/aframe-lsystem-component/master/dist/aframe-lsystem-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-entity-generator-component/master/dist/aframe-entity-generator-component.min.js"></script> -->
     <script src="main.js"></script>
@@ -21,17 +22,13 @@
       <a-assets>
         <a-asset-item id="gorilla" src="gorilla.dae"></a-asset-item>
         <a-asset-item id="elephant" src="elephant.dae"></a-asset-item>
-        <a-asset-item id="turtle" src="turtle.dae"></a-asset-item>
         <a-asset-item id="cheetah" src="cheetah.dae"></a-asset-item>
         <a-asset-item id="tapir" src="tapir.dae"></a-asset-item>
         <a-asset-item id="panda" src="panda.dae"></a-asset-item>
         <a-asset-item id="grass" src="grass.dae"></a-asset-item>
         <a-asset-item id="shrub" src="shrub.dae"></a-asset-item>
         <a-asset-item id="tree" src="tree.dae"></a-asset-item>
-
-
-
-
+        <a-asset-item id="rock" src="rock.dae"></a-asset-item>
 
         <!-- <a-asset-item id="desert" src="desert.dae"></a-asset-item> -->
 
@@ -56,11 +53,6 @@
 
       <a-sky src="#rainforest" rotation="0 -130 0"></a-sky>
 
-      <!-- <a-entity scale="2 2 2" position="0 -8 -12" rotation="0 45 0" lsystem="axiom: F!F!X; productions: X:FX[+!XF'][--!F+/X'][&!FXFX!F''][^!FX!F'']; segmentMixins: F:brown line,brown line,brown line,brown line,green line,green line,green line; angle: 60; iterations: 5; scaleFactor: 0.666">
-      </a-entity> -->
-
-
-
       <!-- <a-ocean width="50" depth="50" density="40" position="0 -0.3 -1"></a-ocean> -->
 
       <!-- <a-entity id="box" class="clickable" geometry="primitive: box" position="8 1 5" draw="background: #D7E8FF" textwrap="textAlign: center; x: 128; y: 128; text: Hello everyone">
@@ -83,10 +75,8 @@
 
       <a-entity animation__yoyo="property: position; dir: alternate; dur: 500;
                                 easing: easeInSine; loop: true; to: 0 0.1 0">
-        <a-entity collada-model="#gorilla" scale="2 2 2" rotation="0 120 0" position="0 0 5"></a-entity>
+        <a-entity collada-model="#gorilla" scale="2 2 2" rotation="0 180 0" position="1.78 5.54 11.77"></a-entity>
       </a-entity>
-
-
 
       <a-entity animation__rotate="property: rotation; dur: 20000;
                                    easing: linear; loop: true; to: 0 360 0; dir: reverse;"
@@ -95,11 +85,14 @@
           <a-entity collada-model="#elephant" rotation="-1 0 0" position="6 -0.4 3" scale="2 2 2" ></a-entity>
       </a-entity>
 
-      <!-- material="envMap: #beach; roughness: 0" -->
-      <a-entity collada-model="#turtle" rotation="0 0 0" position="0 0 0" ></a-entity>
-      <a-entity collada-model="#cheetah" scale="2 2 2" rotation="0 0 0" position="-5 0 0" ></a-entity>
+      <a-entity collada-model="#cheetah" scale="2 2 2" rotation="0 0 0" position="-5 0 0" alongpath="path:-0.75,-0.29,-3.58 -2,-0.29,-2.5 0,-0.29,-1; closed:true; loop:true; dur:5000; delay:4000; inspector:false;"></a-entity>
       <a-entity collada-model="#tapir" rotation="0 0 0" position="-7 0 0" ></a-entity>
-      <a-entity collada-model="#panda" scale="2 2 2" position="-15 0 -0.55" ></a-entity>
+
+      <a-entity collada-model="#panda" scale="2 2 2" rotation="-63.03 158.14 -169.60" position="-13.55 4.92 -3.26"
+                animation__rotate="property: rotation; dur: 1000;
+                                             easing: linear; loop: true; to: -30.03 158.14 -169.60; dir: alternate;"
+      ></a-entity>
+
       <a-entity collada-model="#tree" scale="2 2 2" position="-15 0 0" ></a-entity>
       <a-entity collada-model="#tree" scale="2 2 2" position="4.16 0 12" ></a-entity>
       <a-entity collada-model="#tree" scale="2 2 2" position="-3.51 0 -8.51" ></a-entity>
@@ -107,6 +100,7 @@
       <a-entity collada-model="#tree" scale="2 2 2" position="0.62 0 -0.71" ></a-entity>
       <a-entity collada-model="#tree" scale="2 2 2" position="8.83 0 4.95" ></a-entity>
       <a-entity collada-model="#tree" scale="2 2 2" position="-10 0 9" ></a-entity>
+      <a-entity collada-model="#rock" scale="20 20 20" position="-2.34 0 27.19" ></a-entity>
 
       <a-entity collada-model="#grass" scale="3 3 3" position="-113.52 -30.80 111.68" ></a-entity>
 
